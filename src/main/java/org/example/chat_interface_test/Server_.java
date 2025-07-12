@@ -10,17 +10,26 @@ import java.util.ArrayList;
 
 public class Server_ {
     public static ArrayList<Client_handler> list = new ArrayList<>();
+    public static ArrayList<String> username_list = new ArrayList<>();
 
     public static  void main(String [] args) throws Exception{
+        String user_verification;
 
         ServerSocket serverSocket = new ServerSocket(54444);
         System.out.println("Server is online !!!");
         while(true){
            Socket socket = serverSocket.accept();
            PrintWriter ask_username = new PrintWriter(socket.getOutputStream(),true);
-           ask_username.println("<!>notification from server ! Enter your username <!>");
            BufferedReader take_username = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-           String username = take_username.readLine().replace(" ","");
+           do {
+               ask_username.println("<!>notification from server..Enter a !!UNIQUE!! username <!>");
+               user_verification = take_username.readLine();
+               if(!username_list.contains(user_verification)){
+                   break;
+               }
+           }while(true);
+           username_list.add(user_verification);
+           String username = user_verification.replace(" ","");
            new Thread(() ->{
                try {
                    Client_handler clientHandler = new Client_handler(socket,username);

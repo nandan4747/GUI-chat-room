@@ -7,7 +7,7 @@ public class Client_handler implements Runnable {
     Socket socket;
     PrintWriter out;
     BufferedReader in;
-    String username;
+    public String username;
 
     public Client_handler(Socket socket, String username)throws Exception{
         this.username = username;
