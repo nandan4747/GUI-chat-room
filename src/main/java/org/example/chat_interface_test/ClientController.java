@@ -32,6 +32,8 @@ public class ClientController implements Initializable {
 
    public TextFlow reciver,sender;
 
+   public Effects_ effects;
+
    public void set_message_left(String message){
        if(!message.equals("")){
            int message_index = message.indexOf(":");
@@ -87,7 +89,7 @@ public class ClientController implements Initializable {
     public void alerter_(String message){
        Text text = new Text(message);
 
-       text.setStyle("-fx-fill: red;"+
+       text.setStyle("-fx-fill:rgb(118, 118, 118);"+
                "-fx-font-family:'Arial Black';");
        h_box = new HBox();
        h_box.setAlignment(Pos.CENTER);
@@ -96,8 +98,32 @@ public class ClientController implements Initializable {
        list_view.scrollTo(list_view.getItems().size()-1);
     }
 
+    // effects
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+            effects = new Effects_();
+            double x,y;
+        x = send_btn.getScaleX();
+        y = send_btn.getScaleY();
+
+            send_btn.setOnMouseEntered(mouseEvent -> {
+                effects.Hover_effect(send_btn,"white","rgb(11, 170, 255)",1.2,150);
+            });
+
+            send_btn.setOnMouseExited(mouseEvent -> {
+                effects.Cancel_Effect(send_btn,x,y,"rgb(11, 170, 255)","white",150);
+            });
+            double X = text_field.getScaleX();
+            double Y = text_field.getScaleY();
+
+        text_field.setOnMouseEntered(mouseEvent -> {
+            effects.Hover_effect(text_field,"white","black",1.05,150);
+        });
+
+        text_field.setOnMouseExited(mouseEvent -> {
+            effects.Cancel_Effect(text_field,x,y,"rgb(207, 207, 207)","black",150);
+        });
 
     }
 }

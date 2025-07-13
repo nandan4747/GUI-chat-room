@@ -1,3 +1,20 @@
 .list-cell{
 -fx-background-color : transparent;
 }
+#text_field
+{
+-fx-background-radius :16px;
+-fx-background-color:rgb(207, 207, 207);
+-fx-border-color:rgb(11, 170, 255);
+-fx-border-radius:16px;
+
+}
+#send_btn
+{
+-fx-background-radius:10px;
+-fx-border-color:rgb(11, 170, 255);
+-fx-border-width:1;
+-fx-border-radius:10px;
+-fx-background-color:rgb(11, 170, 255);
+-fx-text-fill:white;
+}

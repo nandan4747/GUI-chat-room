@@ -4,11 +4,25 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="anchore_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="843.0" stylesheets="Css_file.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chat_interface_test.ClientController">
+<AnchorPane fx:id="anchore_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="781.0" stylesheets="Css_file.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chat_interface_test.ClientController">
    <children>
-      <ListView fx:id="list_view" layoutX="8.0" layoutY="25.0" prefHeight="544.0" prefWidth="826.0" />
-      <TextField fx:id="text_field" layoutX="14.0" layoutY="582.0" prefHeight="38.0" prefWidth="691.0" />
-      <Button fx:id="send_btn" layoutX="736.0" layoutY="583.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="98.0" text="Send" />
+      <VBox layoutX="12.0" layoutY="41.0" prefHeight="623.0" prefWidth="818.0" spacing="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+         <children>
+            <ListView fx:id="list_view" prefHeight="588.0" prefWidth="822.0" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="818.0">
+               <children>
+                  <AnchorPane prefHeight="37.0" prefWidth="742.0">
+                     <children>
+                        <TextField fx:id="text_field" layoutX="14.0" layoutY="8.0" prefHeight="38.0" prefWidth="612.0" AnchorPane.bottomAnchor="5" AnchorPane.leftAnchor="4"  />
+                        <Button fx:id="send_btn" layoutX="661.0" layoutY="8.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="99.0" text="Send" AnchorPane.bottomAnchor="5" AnchorPane.rightAnchor="5"/>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

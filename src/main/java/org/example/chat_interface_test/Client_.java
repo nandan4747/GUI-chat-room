@@ -17,7 +17,7 @@ public class Client_ extends Application {
         this.fxmlLoader = new FXMLLoader(Client_.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(getClass().getResource("Css_file.css").toExternalForm());
-        stage.setTitle("Hello!");
+        stage.setTitle("Chat room");
         stage.setScene(scene);
         stage.show();
 
