@@ -9,9 +9,12 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Client_ extends Application {
     FXMLLoader fxmlLoader;
+    ArrayList<String> user_list = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException {
         this.fxmlLoader = new FXMLLoader(Client_.class.getResource("hello-view.fxml"));
@@ -35,7 +38,20 @@ public class Client_ extends Application {
                 while (true) {
                     message = in.readLine();
                     String ui_message = message;
-                    if (message.startsWith("<") && message.endsWith(">")){
+                    if(message.startsWith("`") && message.endsWith("`")){
+
+                        message = message.substring(2,message.length()-2);
+                        String []array = message.split(",");
+
+                        user_list.addAll(Arrays.asList(array));
+
+
+                        javafx.application.Platform.runLater(()->{
+                            controller.member_view.getItems().clear();
+                            controller.member_view.getItems().addAll(array);
+                        });
+                    }
+                    else if (message.startsWith("<") && message.endsWith(">")){
                         javafx.application.Platform.runLater(()->{
                             controller.alerter_(ui_message);
                         });

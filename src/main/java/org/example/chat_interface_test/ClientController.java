@@ -30,6 +30,9 @@ public class ClientController implements Initializable {
    @FXML
    public Button send_btn;
 
+   @FXML
+   ListView member_view;
+
    public TextFlow reciver,sender;
 
    public Effects_ effects;
@@ -85,9 +88,9 @@ public class ClientController implements Initializable {
             list_view.scrollTo(list_view.getItems().size()-1);
             text_field.clear();
     }
-        }
+    }
     public void alerter_(String message){
-       Text text = new Text(message);
+        Text text = new Text(message);
 
        text.setStyle("-fx-fill:rgb(118, 118, 118);"+
                "-fx-font-family:'Arial Black';");
@@ -96,6 +99,7 @@ public class ClientController implements Initializable {
        h_box.getChildren().add(text);
        list_view.getItems().add(h_box);
        list_view.scrollTo(list_view.getItems().size()-1);
+
     }
 
     // effects

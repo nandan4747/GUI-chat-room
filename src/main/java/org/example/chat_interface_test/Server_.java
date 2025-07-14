@@ -28,11 +28,13 @@ public class Server_ {
                    break;
                }
            }while(true);
-           username_list.add(user_verification);
            String username = user_verification.replace(" ","");
+            username_list.add(username);
+            ask_username.println("`"+username_list+"`");
+            String string = "`"+username_list+"`";
            new Thread(() ->{
                try {
-                   Client_handler clientHandler = new Client_handler(socket,username);
+                   Client_handler clientHandler = new Client_handler(socket,username,string);
                    list.add(clientHandler);
                    System.out.println(username +" connected!!");
                    clientHandler.run();
