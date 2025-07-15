@@ -30,10 +30,10 @@ public class Server_ {
                }
            }while(true);
            String username = user_verification;
+            ask_username.println("<!> Welcome "+username+"  :)  <!>");
             username_list.add(username);
             ask_username.println("`"+username_list+"`");
             String string = "`"+username_list+"`";
-            ask_username.println("<!> Welcome "+username+"  :)  <!>");
            new Thread(() ->{
                try {
                    Client_handler clientHandler = new Client_handler(socket,username,string);
