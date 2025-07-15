@@ -3,8 +3,13 @@ package org.example.chat_interface_test;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -15,6 +20,9 @@ import java.util.Arrays;
 public class Client_ extends Application {
     FXMLLoader fxmlLoader;
     ArrayList<String> user_list = new ArrayList<>();
+
+    Text text_;
+    TextFlow text_flow_;
     @Override
     public void start(Stage stage) throws IOException {
         this.fxmlLoader = new FXMLLoader(Client_.class.getResource("hello-view.fxml"));
@@ -31,6 +39,7 @@ public class Client_ extends Application {
         PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
 
         ClientController controller = fxmlLoader.getController();
+
         // message read
         new Thread(()->{
             try {
@@ -46,18 +55,28 @@ public class Client_ extends Application {
                         user_list.addAll(Arrays.asList(array));
 
 
-                        javafx.application.Platform.runLater(()->{
+                        Platform.runLater(()->{
                             controller.member_view.getItems().clear();
-                            controller.member_view.getItems().addAll(array);
+
+                            for (String t : array){
+                                text_ = new Text(t);
+                                text_.setFont(Font.font(18));
+                                text_flow_ = new TextFlow(text_);
+                                text_flow_.setStyle("-fx-background-color:rgb(186, 233, 255);"+"-fx-border-radius:8px;"+"-fx-padding:8;"+"-fx-background-radius:6px;");
+                                text_flow_.setTextAlignment(TextAlignment.CENTER);
+
+                                controller.member_view.getItems().addAll(text_flow_);
+                            }
+
                         });
                     }
                     else if (message.startsWith("<") && message.endsWith(">")){
-                        javafx.application.Platform.runLater(()->{
+                        Platform.runLater(()->{
                             controller.alerter_(ui_message);
                         });
                     }
                     else{
-                        javafx.application.Platform.runLater(()->{
+                        Platform.runLater(()->{
                             controller.set_message_left(ui_message);
                         });
                     }

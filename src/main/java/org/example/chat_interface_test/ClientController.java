@@ -129,5 +129,7 @@ public class ClientController implements Initializable {
             effects.Cancel_Effect(text_field,x,y,"rgb(207, 207, 207)","black",150);
         });
 
+        // listview cell modify
+        member_view.setFixedCellSize(50);
     }
 }

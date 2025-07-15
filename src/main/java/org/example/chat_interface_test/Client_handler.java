@@ -82,6 +82,7 @@ public class Client_handler implements Runnable {
                 server_broad_cast("<!> user "+username+" left the chat..<!>");
                 Server_.list.remove(this);
                 Server_.username_list.remove(username);
+                blank_broadcast("`"+Server_.username_list+"`");
                 socket.close();
             } catch (Exception e) {
                 System.out.println("error while exiting !!! ");

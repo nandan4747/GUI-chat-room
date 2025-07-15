@@ -24,14 +24,16 @@ public class Server_ {
            do {
                ask_username.println("<!>notification from server..Enter a !!UNIQUE!! username <!>");
                user_verification = take_username.readLine();
+               user_verification = user_verification.replace(" ","");
                if(!username_list.contains(user_verification)){
                    break;
                }
            }while(true);
-           String username = user_verification.replace(" ","");
+           String username = user_verification;
             username_list.add(username);
             ask_username.println("`"+username_list+"`");
             String string = "`"+username_list+"`";
+            ask_username.println("<!> Welcome "+username+":) <!>");
            new Thread(() ->{
                try {
                    Client_handler clientHandler = new Client_handler(socket,username,string);
